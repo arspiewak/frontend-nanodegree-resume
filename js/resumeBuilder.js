@@ -2,75 +2,159 @@
 var bio = {
 	name: "Alan R. Spiewak",
 	role: "Software Developer",
-	email: "spiewak@infionline.net",
 	mobile: "(336) 430-0262",
+	email: "spiewak@infionline.net",
 	github: "arspiewak",
 	location: "Greensboro, NC (USA)",
 	bioPic: "https://avatars3.githubusercontent.com/u/15353005?v=3&amp;s=460",
 	welcomeMsg: "Greetings and peace to all.",
-	skills: ["HTML/CSS beginner", "JavaScript newbie", "Former data administrator"]
+	skills: ["HTML/CSS beginner", "JavaScript newbie", "Data administrator"]
 };
 
-var work = {};
-work.position = "Student developer";
-work.employer = "Unemployed";
-work.yearsWorked = 1;
-work.city = "Greensboro, NC";
+var education = {
+	"schools": [
+		{
+			"name": "Wesleyan University",
+			"degree": "Bachelor of Arts",
+			"dates": "1970-1974",
+			"location": "Middletown, CT (USA)",
+			"major": "Chemistry",
+			"minor": "Theater"
+		},{
+			"name": "UNC Greensboro",
+			"degree": "Master of Education",
+			"dates": "2009-2012",
+			"location": "Greensboro, NC (USA)",
+			"major": "Education",
+			"minor": "Middle School Science"
+		},{
+			"name": "Udacity",
+			"degree": "Nanodegree",
+			"dates": "2015-2016 (anticipated)",
+			"location": null,
+			"major": "Front-End Web Development",
+			"minor": null
+		}
+	],
+	"onlineCourses": [
+		,
+		{
+			"title": "Intro to HTML and CSS",
+			"school": "Udacity",
+			"dates": "2015",
+			"URL": "https://www.udacity.com/courses/ud304"
+		},{
+			"title": "JavaScript Basics",
+			"school": "Udacity",
+			"dates": "2016",
+			"URL": "https://www.udacity.com/courses/ud804"
+		},{
+			"title": "Responsive Web Design Fundamentals",
+			"school": "Udacity",
+			"dates": "2015",
+			"URL": "https://www.udacity.com/courses/ud893"
+		},{
+			"title": "Responsive Images",
+			"school": "Udacity",
+			"dates": "2015",
+			"URL": "https://www.udacity.com/courses/ud882"
+		},{
+			"title": "How to Use Git and GitHub",
+			"school": "Udacity",
+			"dates": "2015",
+			"URL": "https://www.udacity.com/courses/ud775"
+		},{
+			"title": "Literacy in the Content Area",
+			"school": "UNC Greensboro",
+			"dates": "2010",
+			"URL": "http://uncg.smartcatalogiq.com/en/2015-2016/Graduate-Bulletin/Courses/TED-Teacher-Education/500/TED-535"
+		}
+	]
+};
 
-var educ = {};
-educ["name"] = "University of North Carolina at Greensboro";
-educ["years"] = "2009-2014";
-educ["city"] = "Greensboro, NC";
+var work = {
+	"jobs": [
+		{
+			"employer": "Philo-Hill Magnet Academy",
+			"title": "Middle School Science Teacher",
+			"dates": "2013-2015",
+			"location": "Winston-Salem (Forsyth County), NC",
+			"description": "Taught sixth grade science in a high-needs school"
+		},{
+			"employer": "New Garden Friends School",
+			"title": "Drama Director, Drama Teacher",
+			"dates": "2005-2011",
+			"location": "Greensboro, NC",
+			"description": "Directed the Drama program at a private school"
+		},{
+			"employer": "Ash Grove Consulting",
+			"title": "Owner/Software Engineer",
+			"dates": "1994-2003 (periodic)",
+			"location": "Greensboro, NC",
+			"description": "Consultant in data administration and software engineering"
+		},{
+			"employer": "Guilford Mills",
+			"title": "Technical Support/Database Analyst",
+			"dates": "1995-1998",
+			"location": "Greensboro, NC",
+			"description": "Lead designer for data warehouse/ad hoc reporting, DB administration"
+		},{
+			"employer": "Softport Systems, Inc.",
+			"title": "Senior Software Engineer",
+			"dates": "1988-1994",
+			"location": "New York, NY",
+			"description": "Team leader/consultant, database design and software construction"
+		},{
+			"employer": "Personnelmetrics, Inc.",
+			"title": "Lead Programmer/Analyst",
+			"dates": "1983-1988",
+			"location": "New York, NY",
+			"description": "Lead designer and programmer, human resources and membership systems"
+		},{
+			"employer": "Performers' Databank",
+			"title": "Owner/Manager",
+			"dates": "1981-1983",
+			"location": "New York, NY",
+			"description": "Resume and mailing service for actors"
+		}
+	]
+};
 
-
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-$("#header").prepend(formattedRole);
-
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-$("#header").prepend(formattedName);
-
-var formattedEmail = HTMLemail.replace("%data%", bio.email);
-$("#header").append(formattedEmail);
-
-var formattedMobile = HTMLmobile.replace("%data%", bio.mobile);
-$("#header").append(formattedMobile);
-
-var formattedGithub = HTMLgithub.replace("%data%", bio.github);
-$("#header").append(formattedGithub);
-
-var formattedLocation = HTMLlocation.replace("%data%", bio.location);
-$("#header").append(formattedLocation);
-
-var formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
-$("#header").append(formattedBioPic);
-
-var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
-$("#header").append(formattedWelcomeMsg);
-
-$("#header").append(HTMLskillsStart);
-var formattedSkill;
-var i;
-
-for (i = 0; i < bio.skills.length; i++) {
-    formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
-    $("#header").append(formattedSkill);
+var project = {
+	"projects": [
+		{
+			"title": "About Me",
+			"dates": "2015",
+			"description": "Udacity 'Hello, World' HTML application",
+			"image": "http://arspiewak.github.io/Udacity-FEND-P1-Portfolio/images/forest-878029_960_720.jpg"
+		},{
+			"title": "Portfolio",
+			"dates": "2015-2016",
+			"description": "Udacity responsive web page to display and run projects",
+			"image": "http://arspiewak.github.io/Udacity-FEND-P1-Portfolio/images/sample-hero-thumb.jpg"
+		},{
+			"title": "Interactive Resume",
+			"dates": "2016",
+			"description": "Udacity JavaScript/JQuery exercise",
+			"image": "http://arspiewak.github.io/Udacity-FEND-P1-Portfolio/images/resume-thumbnail.jpg"
+		}
+	]
 }
 
-// Construct the workExperience section
-$("#workExperience").append(HTMLworkStart);
-
-var formattedWorkTitle = HTMLworkTitle.replace("%data%", work["position"]);
-$("#workExperience").append(formattedWorkTitle);
-
-// Construct the #education section
-$("#education").append(HTMLschoolStart);
-
-var formattedSchoolName = HTMLschoolName.replace("%data%", educ.name);
-$("#education").append(formattedSchoolName);
-
+// code fragments to extend arrays
 
 /*
-var formatted[] = HTML[].replace("%data%", bio.[]);
-$("#header").append(formatted[]);
+		},{
+			"employer": "",
+			"title": "",
+			"dates": "",
+			"location": "",
+			"description": ""
+
+		},{
+			"title": "",
+			"dates": "",
+			"description": "",
+			"image": ""
 
 */
