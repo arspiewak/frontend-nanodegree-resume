@@ -159,6 +159,11 @@ var project = {
 
 */
 
+// Iterators, etc, that will be used throughout the "population" section
+var i, key;		/* general purpose indexes */
+var str;		/* generic string variable */
+
+
 // Display name and role (displays the header section)
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 $("#header").prepend(formattedRole);
@@ -170,7 +175,6 @@ $("#header").prepend(formattedName);
 if (bio.skills.length > 0) {
 	$("#topContacts").append(HTMLskillsStart);
 	var formattedSkill;
-	var i;
 
 	for (i = 0; i < bio.skills.length; i++) {
 	    formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
@@ -178,3 +182,17 @@ if (bio.skills.length > 0) {
 	}
 }
 
+/* Populate the work section. We use a for-in loop, contrary to the Front-End
+ * style sheet (among many other sources), because it's explicitly specified
+ * in the class assignment.
+ */
+// Truth in advertising for the section header
+$("h2:first").append(" (Selected)");
+for (key in work.jobs) {
+	if (work.jobs.hasOwnProperty(key)) {
+		$("#workExperience").append(HTMLworkStart);
+		str = HTMLworkEmployer.replace("%data%",work.jobs[key].employer) +
+			HTMLworkTitle.replace("%data%",work.jobs[key].title);
+		$(".work-entry:last").append(str);
+	}
+}
