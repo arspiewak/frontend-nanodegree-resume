@@ -160,7 +160,7 @@ var project = {
 */
 
 // Iterators, etc, that will be used throughout the "population" section
-var i, key;		/* general purpose indexes */
+var i;		/* general purpose index */
 var str;		/* generic string variable */
 
 
@@ -182,17 +182,17 @@ if (bio.skills.length > 0) {
 	}
 }
 
-/* Populate the work section. We use a for-in loop, contrary to the Front-End
- * style sheet (among many other sources), because it's explicitly specified
- * in the class assignment.
- */
-// Truth in advertising for the section header
+// Truth in advertising for the "Work Experience" section header
 $("h2:first").append(" (Selected)");
-for (key in work.jobs) {
-	if (work.jobs.hasOwnProperty(key)) {
-		$("#workExperience").append(HTMLworkStart);
-		str = HTMLworkEmployer.replace("%data%",work.jobs[key].employer) +
-			HTMLworkTitle.replace("%data%",work.jobs[key].title);
-		$(".work-entry:last").append(str);
-	}
+
+// Populate the work section. Replaced for-in loop with for() per style sheet
+
+for (i = 0; i < work.jobs.length; i++) {
+	$("#workExperience").append(HTMLworkStart);
+	str = HTMLworkEmployer.replace("%data%",work.jobs[i].employer) +
+		HTMLworkTitle.replace("%data%",work.jobs[i].title) +
+		HTMLworkDates.replace("%data%",work.jobs[i].dates) +
+		HTMLworkLocation.replace("%data%",work.jobs[i].location) +
+		HTMLworkDescription.replace("%data%",work.jobs[i].description);
+	$(".work-entry:last").append(str);
 }
