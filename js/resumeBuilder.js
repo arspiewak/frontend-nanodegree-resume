@@ -139,7 +139,7 @@ var project = {
 			"image": "http://arspiewak.github.io/Udacity-FEND-P1-Portfolio/images/resume-thumbnail.jpg"
 		}
 	]
-}
+};
 
 // code fragments to extend arrays
 
@@ -158,3 +158,23 @@ var project = {
 			"image": ""
 
 */
+
+// Display name and role (displays the header section)
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+$("#header").prepend(formattedRole);
+
+var formattedName = HTMLheaderName.replace("%data%", bio.name);
+$("#header").prepend(formattedName);
+
+// Display skills if they're there
+if (bio.skills.length > 0) {
+	$("#topContacts").append(HTMLskillsStart);
+	var formattedSkill;
+	var i;
+
+	for (i = 0; i < bio.skills.length; i++) {
+	    formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
+    	$("#topContacts").append(formattedSkill);
+	}
+}
+
