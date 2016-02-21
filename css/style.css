@@ -104,6 +104,10 @@ a {
   display: none;
 }
 
+button {
+  float: right;
+}
+
 .orange {
   background-color: #f5ae23;
 }
@@ -158,6 +162,7 @@ ul {
 
 img {
   padding: 10px;
+  width: 300px;   /* TODO make more responsive */
 }
 
 span {
