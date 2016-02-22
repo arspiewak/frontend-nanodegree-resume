@@ -16,6 +16,11 @@
 	return;
 }
 
+// Utility function substitutes an url for the hashtag (#) in a format string
+function hashReplace(fmtStr, urlStr) {
+	return retStr = fmtStr.replace("#", urlStr);
+}
+
 // First JSON object
 var bio = {
 	name: "Alan R. Spiewak",
@@ -108,9 +113,9 @@ var education = {
 			"degree": "Bachelor of Arts",
 			"majors": ["Chemistry"],
 			"dates": "1970-1974",
-			"url": "//http://wesleyan.edu/"
+			"url": "http://wesleyan.edu/"
 		},{
-			"name": "UNC Greensboro",
+			"name": "UNC Greensboro, School of Education",
 			"location": "Greensboro, NC (USA)",
 			"degree": "Master of Education",
 			"majors": ["Education, specializing in Middle Grades Science"],
@@ -169,6 +174,8 @@ var education = {
 			// Name and degree share bookend <a> tags, so can't be added separately.
 			tmpStr = HTMLschoolName.replace("%data%", this.schools[i].name) +
 				HTMLschoolDegree.replace("%data%", this.schools[i].degree);
+			// Add a hyperlink to the line
+			tmpStr = hashReplace(tmpStr, this.schools[i].url);
 			$(".education-entry:last").append(tmpStr);
 
 			fmtAdd(this.schools[i].dates, HTMLschoolDates, ".education-entry:last", true);
@@ -205,43 +212,50 @@ var work = {
 			"title": "Middle School Science Teacher",
 			"location": "Winston-Salem (Forsyth County), NC",
 			"dates": "2013-2015",
-			"description": "Taught sixth grade science in a high-needs school"
+			"description": "Taught sixth grade science in a high-needs school",
+			"url": "http://www.wsfcs.k12.nc.us/philohill"
 		},{
 			"employer": "New Garden Friends School",
 			"title": "Drama Director, Drama Teacher",
 			"location": "Greensboro, NC",
 			"dates": "2005-2011",
-			"description": "Directed the Drama program at a private school"
+			"description": "Directed the Drama program at a private school",
+			"url": "http://ngfs.org"
 		},{
 			"employer": "Ash Grove Consulting",
 			"title": "Owner/Software Engineer",
 			"location": "Greensboro, NC",
 			"dates": "1994-2003 (periodic)",
-			"description": "Consultant in data administration and software engineering"
+			"description": "Consultant in data administration and software engineering",
+			"url": "defunct-employer.html"
 		},{
 			"employer": "Guilford Mills",
 			"title": "Technical Support/Database Analyst",
 			"location": "Greensboro, NC",
 			"dates": "1995-1998",
-			"description": "Lead designer for data warehouse/ad hoc reporting, DB administration"
+			"description": "Lead designer for data warehouse/ad hoc reporting, DB administration",
+			"url": "http://www.bizjournals.com/triad/news/2012/04/11/guilford-mills-sold-to-michigan-company.html"
 		},{
 			"employer": "Softport Systems, Inc.",
 			"title": "Senior Software Engineer",
 			"location": "New York, NY",
 			"dates": "1988-1994",
-			"description": "Team leader/consultant, database design and software construction"
+			"description": "Team leader/consultant, database design and software construction",
+			"url": "http://www.thefreelibrary.com/BEA+Acquires+Softport+Systems+to+Expand+Its+E-Commerce+Consulting+And...-a062542907"
 		},{
 			"employer": "Personnelmetrics, Inc.",
 			"title": "Lead Programmer/Analyst",
 			"location": "New York, NY",
 			"dates": "1983-1988",
-			"description": "Lead designer and programmer, human resources and membership systems"
+			"description": "Lead designer and programmer, human resources and membership systems",
+			"url": "http://www.companiesny.com/n/business/personnelmetrics-inc/295044"
 		},{
 			"employer": "Performers' Databank",
 			"title": "Owner/Manager",
 			"location": "New York, NY",
 			"dates": "1981-1983",
-			"description": "Resume and mailing service for actors"
+			"description": "Resume and mailing service for actors",
+			"url": "defunct-employer.html"
 		}
 	],
 	/*
@@ -259,6 +273,9 @@ var work = {
 				HTMLworkDates.replace("%data%",work.jobs[i].dates) +
 				HTMLworkLocation.replace("%data%",work.jobs[i].location) +
 				HTMLworkDescription.replace("%data%",work.jobs[i].description);
+			// Add a hyperlink to the line
+			str = hashReplace(str, this.jobs[i].url);
+
 			$(".work-entry:last").append(str);
 		}
 
@@ -281,17 +298,20 @@ var project = {
 			"title": "About Me",
 			"dates": "2015",
 			"description": "Udacity 'Hello, World' HTML application",
-			"images": ["http://arspiewak.github.io/Udacity-FEND-P1-Portfolio/images/forest-878029_960_720.jpg"]
+			"images": ["http://arspiewak.github.io/Udacity-FEND-P1-Portfolio/images/forest-878029_960_720.jpg"],
+			"url": "http://arspiewak.github.io/Udacity-FEND-P0-About-Me/"
 		},{
 			"title": "Portfolio",
 			"dates": "2015-2016",
 			"description": "Udacity responsive web page to display and run projects",
-			"images": ["http://arspiewak.github.io/Udacity-FEND-P1-Portfolio/images/sample-hero-thumb.jpg"]
+			"images": ["http://arspiewak.github.io/Udacity-FEND-P1-Portfolio/images/sample-hero-thumb.jpg"],
+			"url": "http://arspiewak.github.io/Udacity-FEND-P1-Portfolio/portfolio.html"
 		},{
 			"title": "Interactive Resume",
 			"dates": "2016",
 			"description": "Udacity JavaScript/JQuery exercise",
-			"images": ["images/ResumeThumb.jpg", "http://placehold.it/320x190"] // test second image
+			"images": ["images/ResumeThumb.jpg", "http://placehold.it/320x190"], // test 2nd img
+			"url": "#"
 		}
 	],
 	display: function() {
@@ -300,15 +320,18 @@ var project = {
 		 */
 		var projLen = this.projects.length;
 		var thisProj = {};
+		var tmpStr;
 
 		for (var i = 0; i < projLen; i++) {
 			$("#projects").append(HTMLprojectStart);
 			thisProj = this.projects[i];
-			$(".project-entry:last").append (
-				HTMLprojectTitle.replace("%data%", thisProj.title) +
+			tmpStr = HTMLprojectTitle.replace("%data%", thisProj.title) +
 				HTMLprojectDates.replace("%data%", thisProj.dates) +
-				HTMLprojectDescription.replace("%data%", thisProj.description) );
-//				HTMLprojectImage.replace("%data%", thisProj.images[0]) );
+				HTMLprojectDescription.replace("%data%", thisProj.description);
+			// Add a hyperlink to the line
+			tmpStr = hashReplace(tmpStr, this.projects[i].url);
+
+			$(".project-entry:last").append (tmpStr);
 
 			// Images turned out to be in an array. Loop through in case we find >1.
 			for (var j = 0; j < thisProj.images.length; j++) {

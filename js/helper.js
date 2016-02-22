@@ -38,23 +38,24 @@ var HTMLworkDescription = '<p><br>%data%</p>';
 
 var HTMLprojectStart = '<div class="project-entry"></div>';
 var HTMLprojectTitle = '<a href="#">%data%</a>';
-var HTMLprojectDates = '<div class="date-text">%data%</div>';
+var HTMLprojectDates = '<p class="date-text">%data%</p>';
 var HTMLprojectDescription = '<p><br>%data%</p>';
 var HTMLprojectImage = '<img src="%data%">';
+
 var HTMLschoolStart = '<div class="education-entry"></div>';
 var HTMLschoolName = '<a href="#">%data%';
 var HTMLschoolDegree = ' -- %data%</a>';
-var HTMLschoolDates = '<div class="date-text">%data%</div>';
+var HTMLschoolDates = '<div class="date-text">%data%</div><br>';
 var HTMLschoolLocation = '<div class="location-text">%data%</div>';
-var HTMLschoolMajor = '<em><br>Major: %data%</em>';
+var HTMLschoolMajor = '<div class="major"><em>Major: %data%</em></div>';
 
 // added #online to enable padding matched to educaiton-entry
-var HTMLonlineClasses = '<h3>Online Classes</h3><div id="online"></div>"';
-var HTMLonlineTitle = '<a href="#">%data%';
-var HTMLonlineSchool = ' - %data%</a>';
+var HTMLonlineClasses = '<h3>Online Classes</h3><div id="online"></div>';
+var HTMLonlineTitle = '<p class="entry-title">%data%';
+var HTMLonlineSchool = ' - %data%</p>';
 var HTMLonlineDates = '<div class="date-text">%data%</div>';
 // Modified to insert the URL twice, as text and as a hyperlink
-var HTMLonlineURL = '<br><a href="%data%">%data%</a>';
+var HTMLonlineURL = '<a href="%data%">%data%</a>';
 
 var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
