@@ -157,6 +157,7 @@ ul {
   float: left;
   padding: 10px;
   width: 200px;
+  height: 200px;
   display: none;
 }
 
@@ -184,6 +185,7 @@ span {
 @media only screen and (max-width:900px) {
   .biopic {
     width: 175px;
+    height: 175px;
   }
 }
 
@@ -193,6 +195,7 @@ span {
   }
   .biopic {
     width: 150px;
+    height: 150px;
   }
   .welcome-message {
     display: none;

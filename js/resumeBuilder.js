@@ -1,5 +1,21 @@
 // resumeBuilder.js 	Alan Spiewak 	Part of Front-End Project 2, Interactive Resume
 
+/* Utility function inserts data into an HTML format string and appends/prepends it to an
+ * element on the page. Arguments:
+ *		source: string containing the data to be inserted
+ *		format: HTML format string, with placeholder "%data%" where source is inserted
+ *		target: identifier (string format) of the page element to receive the insertion
+ *		atEnd: Boolean, if true the result is appended. Otherwise it is prepended.
+ */
+ function fmtAdd(source, format, target, atEnd) {
+	if (atEnd) {
+		$(target).append(format.replace("%data%", source));
+	} else {
+		$(target).prepend(format.replace("%data%", source));
+	}
+	return;
+}
+
 // First JSON object
 var bio = {
 	name: "Alan R. Spiewak",
@@ -18,17 +34,36 @@ var bio = {
 	// Display method
 	display: function() {
 		/* Tack on name and role HTML strings before the contacts flex box. Adding this text
-		 * causes the header section to display.
+		 * causes the header section to display. These two fields can't use fmtAdd()
+		 * because prepend will add unwanted tag boundaries.
 		 */
 		var formattedName = HTMLheaderName.replace("%data%", bio.name);
 		var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 		$("#header").prepend(formattedName + formattedRole);
 
-		// Add contacts
+		// Add contacts to top of page
+		fmtAdd(this.contacts.mobile, HTMLmobile, "#topContacts", true);
+		fmtAdd(this.contacts.email, HTMLemail, "#topContacts", true);
+		fmtAdd(this.contacts.github, HTMLgithub, "#topContacts", true);
+		if (this.contacts.twitter != null) {
+			fmtAdd(this.contacts.twitter, HTMLtwitter, "#topContacts", true);
+		}
+		fmtAdd(this.contacts.location, HTMLlocation, "#topContacts", true);
+
+		// Add contacts to bottom of page
+		fmtAdd(this.contacts.mobile, HTMLmobile, "#lets-connect", true);
+		fmtAdd(this.contacts.email, HTMLemail, "#lets-connect", true);
+		fmtAdd(this.contacts.github, HTMLgithub, "#lets-connect", true);
+		if (this.contacts.twitter != null) {
+			fmtAdd(this.contacts.twitter, HTMLtwitter, "#lets-connect", true);
+		}
+		fmtAdd(this.contacts.location, HTMLlocation, "#lets-connect", true);
 
 		// Picture
+		fmtAdd(this.bioPic, HTMLbioPic, "#topContacts", true);
 
 		// Welcome message
+		fmtAdd(this.welcomeMessage, HTMLwelcomeMsg, "#topContacts", true);
 
 		// Display skills if they're there
 		if (bio.skills.length > 0) {
@@ -36,8 +71,7 @@ var bio = {
 			var formattedSkill;
 
 			for (var i = 0; i < bio.skills.length; i++) {
-			    formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
-				$("#topContacts").append(formattedSkill);
+				fmtAdd(this.skills[i], HTMLskills, "#topContacts", true);
 			}
 		}
 		// Class assignment: a button modifies name capitalization
@@ -78,8 +112,8 @@ var education = {
 		},{
 			"name": "UNC Greensboro",
 			"location": "Greensboro, NC (USA)",
-			"degree": "Master of Education, specialization in Middle Grades Science",
-			"majors": ["Education"],
+			"degree": "Master of Education",
+			"majors": ["Education, specializing in Middle Grades Science"],
 			"dates": "2009-2012",
 			"url": "https://soe.uncg.edu/"
 		},{
@@ -96,36 +130,67 @@ var education = {
 			"title": "Intro to HTML and CSS",
 			"school": "Udacity",
 			"date": "2015",
-			"URL": "https://www.udacity.com/courses/ud304"
+			"url": "https://www.udacity.com/courses/ud304"
 		},{
 			"title": "JavaScript Basics",
 			"school": "Udacity",
 			"date": "2016",
-			"URL": "https://www.udacity.com/courses/ud804"
+			"url": "https://www.udacity.com/courses/ud804"
 		},{
 			"title": "Responsive Web Design Fundamentals",
 			"school": "Udacity",
 			"date": "2015",
-			"URL": "https://www.udacity.com/courses/ud893"
+			"url": "https://www.udacity.com/courses/ud893"
 		},{
 			"title": "Responsive Images",
 			"school": "Udacity",
 			"date": "2015",
-			"URL": "https://www.udacity.com/courses/ud882"
+			"url": "https://www.udacity.com/courses/ud882"
 		},{
 			"title": "How to Use Git and GitHub",
 			"school": "Udacity",
 			"date": "2015",
-			"URL": "https://www.udacity.com/courses/ud775"
+			"url": "https://www.udacity.com/courses/ud775"
 		},{
 			"title": "Literacy in the Content Area",
 			"school": "UNC Greensboro",
 			"date": "2010",
-			"URL": "http://uncg.smartcatalogiq.com/en/2015-2016/Graduate-Bulletin/Courses/TED-Teacher-Education/500/TED-535"
+			"url": "http://uncg.smartcatalogiq.com/en/2015-2016/Graduate-Bulletin/Courses/TED-Teacher-Education/500/TED-535"
 		}
 	],
 	display: function() {
-		return "OK";
+		// Note we start an education-entry (in #education), then add details to that new entry
+		var tmpStr;
+
+		// Start with schools
+		for (var i = 0; i < this.schools.length; i++){
+			$("#education").append(HTMLschoolStart);
+
+			// Name and degree share bookend <a> tags, so can't be added separately.
+			tmpStr = HTMLschoolName.replace("%data%", this.schools[i].name) +
+				HTMLschoolDegree.replace("%data%", this.schools[i].degree);
+			$(".education-entry:last").append(tmpStr);
+
+			fmtAdd(this.schools[i].dates, HTMLschoolDates, ".education-entry:last", true);
+			fmtAdd(this.schools[i].location, HTMLschoolLocation, ".education-entry:last", true);
+			for (var j = 0; j < this.schools[i].majors.length; j++) {
+				fmtAdd(this.schools[i].majors[j], HTMLschoolMajor, ".education-entry:last", true);
+			}
+		}
+
+		// Continue with online courses. This time no class per entry, just a list of HTML strings
+		$("#education").append(HTMLonlineClasses);
+		for (i = 0; i < this.onlineCourses.length; i++) {
+
+			// Title and school share <a> tags
+			tmpStr = HTMLonlineTitle.replace("%data%", this.onlineCourses[i].title) +
+				HTMLonlineSchool.replace("%data%", this.onlineCourses[i].school);
+			$("#education").append(tmpStr);
+
+			fmtAdd(this.onlineCourses[i].date, HTMLonlineDates, "#education", true);
+			fmtAdd(this.onlineCourses[i].url, HTMLonlineURL, "#education", true);
+		}
+		return;
 	}
 };
 
@@ -227,6 +292,9 @@ var project = {
 		}
 	],
 	display: function() {
+		/* This function was written before fmtAdd(). I've kept it, instead of rewriting it
+		 * to match, for sentimental reasons.
+		 */
 		var projLen = this.projects.length;
 		var addDisplay = function(s) { $("#projects").append(s); };
 		var thisProj = {};
@@ -246,7 +314,7 @@ var project = {
 }; /* project */
 
 
-// Don't forget to call the display functions!
+// Don't forget to call the display methods!
 bio.display();
 work.display();
 project.display();
