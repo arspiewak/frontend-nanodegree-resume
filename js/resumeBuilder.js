@@ -223,7 +223,7 @@ var project = {
 			"title": "Interactive Resume",
 			"dates": "2016",
 			"description": "Udacity JavaScript/JQuery exercise",
-			"images": ["http://arspiewak.github.io/Udacity-FEND-P1-Portfolio/images/resume-thumbnail.jpg"]
+			"images": ["images/ResumeThumb.jpg"]
 		}
 	],
 	display: function() {
