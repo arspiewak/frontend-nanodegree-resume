@@ -14,6 +14,11 @@ h6 {
   font-family: "Roboto", sans-serif;
 }
 
+body {
+  max-width: 900px;
+  margin: auto;
+}
+
 .clear-fix {
   overflow: auto;
 }
@@ -57,7 +62,7 @@ h2,
 h3,
 h4,
 h5 {
-  padding:10px 5%;
+  padding: 10px 5%;
 
 }
 
@@ -102,6 +107,14 @@ a {
 #skills-h3 {
   color: #f5ae23;
 /*  display: none; */
+}
+
+#name {
+  margin-right: 20px;
+}
+
+#online {
+  padding: 0 5%;
 }
 
 button {
@@ -205,13 +218,13 @@ span {
 #map {
   display: block;
   height: 100%;
-  margin: 0 5%;
+  margin: 0 5% 5%;
 }
 
 #mapDiv {
   height: 400px;
   width: 100%;
-  padding-bottom: 5%;
+  padding-bottom: 7%;
 }
 
 @media only screen and (min-width: 750px) {

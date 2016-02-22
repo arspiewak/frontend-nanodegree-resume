@@ -51,27 +51,27 @@ var bio = {
 		fmtAdd(this.contacts.location, HTMLlocation, "#topContacts", true);
 
 		// Add contacts to bottom of page
-		fmtAdd(this.contacts.mobile, HTMLmobile, "#lets-connect", true);
-		fmtAdd(this.contacts.email, HTMLemail, "#lets-connect", true);
-		fmtAdd(this.contacts.github, HTMLgithub, "#lets-connect", true);
+		fmtAdd(this.contacts.mobile, HTMLmobile, "#footerContacts", true);
+		fmtAdd(this.contacts.email, HTMLemail, "#footerContacts", true);
+		fmtAdd(this.contacts.github, HTMLgithub, "#footerContacts", true);
 		if (this.contacts.twitter !== null) {
-			fmtAdd(this.contacts.twitter, HTMLtwitter, "#lets-connect", true);
+			fmtAdd(this.contacts.twitter, HTMLtwitter, "#footerContacts", true);
 		}
-		fmtAdd(this.contacts.location, HTMLlocation, "#lets-connect", true);
+		fmtAdd(this.contacts.location, HTMLlocation, "#footerContacts", true);
 
 		// Picture
-		fmtAdd(this.bioPic, HTMLbioPic, "#topContacts", true);
+		fmtAdd(this.bioPic, HTMLbioPic, "#header", true);
 
 		// Welcome message
-		fmtAdd(this.welcomeMessage, HTMLwelcomeMsg, "#topContacts", true);
+		fmtAdd(this.welcomeMessage, HTMLwelcomeMsg, "#header", true);
 
 		// Display skills if they're there
 		if (bio.skills.length > 0) {
-			$("#topContacts").append(HTMLskillsStart);
+			$("#header").append(HTMLskillsStart);
 			var formattedSkill;
 
 			for (var i = 0; i < bio.skills.length; i++) {
-				fmtAdd(this.skills[i], HTMLskills, "#topContacts", true);
+				fmtAdd(this.skills[i], HTMLskills, "#header", true);
 			}
 		}
 		// Class assignment: a button modifies name capitalization
@@ -178,20 +178,20 @@ var education = {
 			}
 		}
 
-		// Continue with online courses. This time no class per entry, just a list of HTML strings
+		// Continue with online courses. I've added #online to match formatting
 		$("#education").append(HTMLonlineClasses);
 		for (i = 0; i < this.onlineCourses.length; i++) {
 
 			// Title and school share <a> tags
 			tmpStr = HTMLonlineTitle.replace("%data%", this.onlineCourses[i].title) +
 				HTMLonlineSchool.replace("%data%", this.onlineCourses[i].school);
-			$("#education").append(tmpStr);
+			$("#online").append(tmpStr);
 
-			fmtAdd(this.onlineCourses[i].date, HTMLonlineDates, "#education", true);
+			fmtAdd(this.onlineCourses[i].date, HTMLonlineDates, "#online", true);
 
 			// Special case: to make the url functional we insert the source twice (global regexp)
-			$("#education").append(HTMLonlineURL.replace(/%data%/g, this.onlineCourses[i].url));
-			//fmtAdd(this.onlineCourses[i].url, HTMLonlineURL, "#education", true);
+			$("#online").append(HTMLonlineURL.replace(/%data%/g, this.onlineCourses[i].url));
+			//fmtAdd(this.onlineCourses[i].url, HTMLonlineURL, "#online", true);
 		}
 		return;
 	}
@@ -291,7 +291,7 @@ var project = {
 			"title": "Interactive Resume",
 			"dates": "2016",
 			"description": "Udacity JavaScript/JQuery exercise",
-			"images": ["images/ResumeThumb.jpg"]
+			"images": ["images/ResumeThumb.jpg", "http://placehold.it/320x190"] // test second image
 		}
 	],
 	display: function() {
