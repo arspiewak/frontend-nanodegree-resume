@@ -188,7 +188,10 @@ var education = {
 			$("#education").append(tmpStr);
 
 			fmtAdd(this.onlineCourses[i].date, HTMLonlineDates, "#education", true);
-			fmtAdd(this.onlineCourses[i].url, HTMLonlineURL, "#education", true);
+
+			// Special case: to make the url functional we insert the source twice (global regexp)
+			$("#education").append(HTMLonlineURL.replace(/%data%/g, this.onlineCourses[i].url));
+			//fmtAdd(this.onlineCourses[i].url, HTMLonlineURL, "#education", true);
 		}
 		return;
 	}
