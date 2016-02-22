@@ -45,7 +45,7 @@ var bio = {
 		fmtAdd(this.contacts.mobile, HTMLmobile, "#topContacts", true);
 		fmtAdd(this.contacts.email, HTMLemail, "#topContacts", true);
 		fmtAdd(this.contacts.github, HTMLgithub, "#topContacts", true);
-		if (this.contacts.twitter != null) {
+		if (this.contacts.twitter !== null) {
 			fmtAdd(this.contacts.twitter, HTMLtwitter, "#topContacts", true);
 		}
 		fmtAdd(this.contacts.location, HTMLlocation, "#topContacts", true);
@@ -54,7 +54,7 @@ var bio = {
 		fmtAdd(this.contacts.mobile, HTMLmobile, "#lets-connect", true);
 		fmtAdd(this.contacts.email, HTMLemail, "#lets-connect", true);
 		fmtAdd(this.contacts.github, HTMLgithub, "#lets-connect", true);
-		if (this.contacts.twitter != null) {
+		if (this.contacts.twitter !== null) {
 			fmtAdd(this.contacts.twitter, HTMLtwitter, "#lets-connect", true);
 		}
 		fmtAdd(this.contacts.location, HTMLlocation, "#lets-connect", true);
@@ -296,18 +296,22 @@ var project = {
 		 * to match, for sentimental reasons.
 		 */
 		var projLen = this.projects.length;
-		var addDisplay = function(s) { $("#projects").append(s); };
 		var thisProj = {};
 
 		for (var i = 0; i < projLen; i++) {
-			addDisplay(HTMLprojectStart);
+			$("#projects").append(HTMLprojectStart);
 			thisProj = this.projects[i];
 			$(".project-entry:last").append (
 				HTMLprojectTitle.replace("%data%", thisProj.title) +
 				HTMLprojectDates.replace("%data%", thisProj.dates) +
-				HTMLprojectDescription.replace("%data%", thisProj.description) +
-				HTMLprojectImage.replace("%data%", thisProj.images[0]) );
-		} /* for */
+				HTMLprojectDescription.replace("%data%", thisProj.description) );
+//				HTMLprojectImage.replace("%data%", thisProj.images[0]) );
+
+			// Images turned out to be in an array. Loop through in case we find >1.
+			for (var j = 0; j < thisProj.images.length; j++) {
+				fmtAdd(thisProj.images[j], HTMLprojectImage, ".project-entry:last", true);
+			}	/* for j */
+		} 		/* for i */
 
 		return true;
 	} /* display */
