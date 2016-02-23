@@ -56,12 +56,13 @@ h2.orange {
 
 .project-link {
   color: #000193;
+  text-shadow: 0px 0px 20px SkyBlue;
 }
 
 h3 {
   font-style: italic;
   font-size: 20px;
-  color: #000;
+  color: #dc94ff;
   line-height: 22px;
 }
 
@@ -144,12 +145,6 @@ a:hover {
 
 #online {
   padding: 0 5%;
-}
-
-button {
-  float: right;
-  background-color: #dc94ff;
-  color: #3b2844;
 }
 
 .orange {

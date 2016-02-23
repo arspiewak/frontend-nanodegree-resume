@@ -41,7 +41,7 @@ var HTMLworkDescription = '<p><br>%data%</p>';
 var HTMLprojectStart = '<div class="project-entry"></div>';
 var HTMLprojectTitle = '<a href="#" class="project-link">%data%</a>';
 var HTMLprojectDates = '<p class="date-text">%data%</p>';
-var HTMLprojectDescription = '<p><br>%data%</p>';
+var HTMLprojectDescription = '<p class="white-text"><br>%data%</p>';
 var HTMLprojectImage = '<img src="%data%" alt="Project thumbnail photo">';
 
 var HTMLschoolStart = '<div class="education-entry"></div>';
@@ -59,7 +59,6 @@ var HTMLonlineDates = '<div class="date-text">%data%</div>';
 // Modified to insert the URL twice, as text and as a hyperlink
 var HTMLonlineURL = '<a href="%data%">%data%</a>';
 
-var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
 
 
