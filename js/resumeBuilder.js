@@ -32,7 +32,7 @@ var bio = {
 		twitter: null,
 		location: "Greensboro, NC (USA)"
 	},
-	welcomeMessage: "Greetings and peace to all.",
+	welcomeMessage: "Building software for fun and glory",
 	skills: ["HTML/CSS beginner", "JavaScript newbie", "Data administrator"],
 	bioPic: "https://avatars3.githubusercontent.com/u/15353005?v=3&amp;s=460",
 
@@ -44,7 +44,8 @@ var bio = {
 		 */
 		var formattedName = HTMLheaderName.replace("%data%", bio.name);
 		var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-		$("#header").prepend(formattedName + formattedRole);
+		console.log(formattedName + formattedRole + HTMLudacityLogo);
+		$("#header").prepend(formattedName + formattedRole + HTMLudacityLogo);
 
 		// Add contacts to top of page
 		fmtAdd(this.contacts.mobile, HTMLmobile, "#topContacts", true);

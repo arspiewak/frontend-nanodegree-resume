@@ -168,6 +168,16 @@ button {
   padding: 10px;
 }
 
+.header-flex-box {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+  align-items: flex-end;
+}
+
 .center-content {
   padding: 2.5% 5%;
 }
@@ -182,6 +192,15 @@ ul {
   width: 200px;
   height: 200px;
   display: none;
+}
+
+.udacity-logo {
+  float: right;
+  background-color: white;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  padding: 0;
 }
 
 img {
