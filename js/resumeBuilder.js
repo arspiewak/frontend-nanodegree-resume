@@ -44,7 +44,6 @@ var bio = {
 		 */
 		var formattedName = HTMLheaderName.replace("%data%", bio.name);
 		var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-		console.log(formattedName + formattedRole + HTMLudacityLogo);
 		$("#header").prepend(formattedName + formattedRole + HTMLudacityLogo);
 
 		// Add contacts to top of page

@@ -304,6 +304,14 @@ span {
   padding-bottom: 7%;
 }
 
+.info-window {
+  background-color: #dc94ff;
+  color: #3b2844;
+  padding: 15px;
+  border-radius: 5%;
+  border:  2px solid #3b2844;
+}
+
 @media only screen and (min-width: 750px) {
   #skills-h3,
   .biopic {
