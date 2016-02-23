@@ -11,12 +11,14 @@ h5,
 h6 {
   padding:0;
   margin:0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Droid Serif", Geneva, sans-serif;
 }
 
 body {
   max-width: 900px;
   margin: auto;
+  background-color: #054f25;
+
 }
 
 .major {
@@ -35,17 +37,25 @@ body {
 
 h1 {
   font-size: 40px;
-  color: #f5a623;
+  color: #dc94ff;
   line-height: 48px;
   display: inline;
 }
 
 h2 {
-  font-weight: bold;
+  font-weight: 700;
   font-size: 24px;
-  color: #999;
+  color: #dc94ff;
   line-height: 29px;
   padding: 10px;
+}
+
+h2.orange {
+  color: #fff;
+}
+
+.project-link {
+  color: #000193;
 }
 
 h3 {
@@ -56,7 +66,7 @@ h3 {
 }
 
 h4 {
-  font-weight: bold;
+  font-weight: 700;
   font-size: 14px;
   color: #4a4a4a;
   line-height: 17px;
@@ -95,10 +105,14 @@ p {
 }
 
 a {
-  color: #1199c3;
+  color: #1617b4;
   text-decoration: none;
   margin-top: 10px;
   display: block;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .entry-title {
@@ -115,8 +129,13 @@ a {
 }
 
 #skills-h3 {
-  color: #f5ae23;
-/*  display: none; */
+  color: #dc94ff;
+  display: none;
+  padding-top: 20px;
+}
+
+#skills {
+  display: none;
 }
 
 #name {
@@ -129,18 +148,21 @@ a {
 
 button {
   float: right;
+  background-color: #dc94ff;
+  color: black;
 }
 
 .orange {
-  background-color: #f5ae23;
+  background-color: #dc94ff;
 }
 
 .orange-text {
-  color: #f5ae23;
+  color: #dc94ff;
+  font-weight: 700;
 }
 
 .white-text {
-  font-weight: bold;
+  font-weight: 400;
   color: #fff;
 }
 
@@ -151,12 +173,12 @@ button {
 }
 
 .dark-gray {
-  background-color: #4a4a4a;
+  background-color: #3b2844;
 }
 
-/* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #054f25;
+/*  background-color: #484848; */
 }
 
 .flex-box {
@@ -178,6 +200,11 @@ button {
   align-items: flex-end;
 }
 
+.flex-item {
+  font-size: 75%;
+  font-weight: 300;
+}
+
 .center-content {
   padding: 2.5% 5%;
 }
@@ -192,6 +219,7 @@ ul {
   width: 200px;
   height: 200px;
   display: none;
+  margin-right: 5px;
 }
 
 .udacity-logo {
