@@ -149,7 +149,7 @@ a:hover {
 button {
   float: right;
   background-color: #dc94ff;
-  color: black;
+  color: #3b2844;
 }
 
 .orange {
@@ -216,9 +216,8 @@ ul {
 .biopic {
   float: left;
   padding: 10px;
-  width: 200px;
-  height: 200px;
-  display: none;
+  width: 25%;
+  height: auto;
   margin-right: 5px;
 }
 
@@ -254,10 +253,10 @@ span {
   }
 }
 
-@media only screen and (max-width:900px) {
-  .biopic {
-    width: 175px;
-    height: 175px;
+@media only screen and (max-width:775px) {
+  .flex-box {
+    flex-direction: column;
+    align-items: flex-end;
   }
 }
 
@@ -265,12 +264,31 @@ span {
   #lets-connect {
     margin-top: 10%;
   }
-  .biopic {
-    width: 150px;
-    height: 150px;
+}
+
+@media only screen and (max-width: 650px) {
+  .udacity-logo {
+    order: -1;
   }
-  .welcome-message {
-    display: none;
+  #name {
+    order: -2;
+  }
+}
+
+@media only screen and (max-width: 465px) {
+  .header-flex-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .udacity-logo {
+    order: 1;
+  }
+}
+
+@media only screen and (max-width: 390px)  {
+  h1 {
+    font-size: 20px;
+    line-height: 24px;
   }
 }
 
